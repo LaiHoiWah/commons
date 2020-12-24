@@ -16,7 +16,7 @@ public class StringUtils{
         return org.apache.commons.lang3.StringUtils.length(cs);
     }
 
-    public static String deleteLastChar(String str, String ch){
+    public static String deleteLastCharOf(String str, String ch){
         if(isBlank(str)){
             return str;
         }

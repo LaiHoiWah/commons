@@ -63,7 +63,7 @@ public class ParamsUtils{
             }
         });
 
-        return StringUtils.deleteLastChar(sb.toString(), AND_CHARACTER);
+        return StringUtils.deleteLastCharOf(sb.toString(), AND_CHARACTER);
     }
 
     private static Map<String, String> parse(String param){
