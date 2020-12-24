@@ -40,6 +40,12 @@
             <version>${apache.commons-codec.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${apache.httpclient.version}</version>
+        </dependency>
+
         <!-- google -->
         <dependency>
             <groupId>com.google.code.gson</groupId>

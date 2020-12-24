@@ -1,8 +1,9 @@
 package com.wah.commons.domain;
 
+import com.wah.commons.utils.GsonUtils;
+import com.wah.commons.utils.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 
 @Getter
 @Setter
@@ -34,7 +35,6 @@ public class Entity{
 
     @Override
     public String toString(){
-//        return GsonUtils.serialize(this);
-        return "";
+        return GsonUtils.serialize(this);
     }
 }
