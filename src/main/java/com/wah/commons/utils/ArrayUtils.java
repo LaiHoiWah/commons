@@ -1,6 +1,7 @@
 package com.wah.commons.utils;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class ArrayUtils{
 
@@ -82,5 +83,33 @@ public class ArrayUtils{
 
     public static <T> boolean isEmpty(T[] array){
         return (array == null || Array.getLength(array) == 0);
+    }
+
+    public static boolean blankElement(String[] array){
+        if(isEmpty(array)){
+            return true;
+        }
+
+        for(String element : array){
+            if(StringUtils.isBlank(element)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static <T> boolean nullElement(T[] array){
+        if(isEmpty(array)){
+            return true;
+        }
+
+        for(T element : array){
+            if(element == null){
+                return true;
+            }
+        }
+
+        return false;
     }
 }
