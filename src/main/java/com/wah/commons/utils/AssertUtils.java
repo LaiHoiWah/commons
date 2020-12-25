@@ -94,4 +94,46 @@ public class AssertUtils{
             throw new IllegalArgumentException(message);
         }
     }
+
+    public static void between(byte compare, byte min, byte max, String message){
+        if(NumberUtils.between(compare, min, max)){
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    public static void between(char compare, char min, char max, String message){
+        if(NumberUtils.between(compare, min, max)){
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    public static void between(short compare, short min, short max, String message){
+        if(NumberUtils.between(compare, min, max)){
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    public static void between(int compare, int min, int max, String message){
+        if(NumberUtils.between(compare, min, max)){
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    public static void between(long compare, long min, long max, String message){
+        if(NumberUtils.between(compare, min, max)){
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    public static void between(float compare, float min, float max, String message){
+        if(NumberUtils.between(compare, min, max)){
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    public static void between(double compare, double min, double max, String message){
+        if(NumberUtils.between(compare, min, max)){
+            throw new IllegalArgumentException(message);
+        }
+    }
 }
