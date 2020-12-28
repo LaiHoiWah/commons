@@ -116,12 +116,38 @@ public class DateTimeUtils{
         return set(date, Calendar.MILLISECOND, amount);
     }
 
-    private static Date set(Date date, int field, int amount){
+    public static Date set(Date date, int field, int amount){
         AssertUtils.notNull(date, "计算的日期不能为空");
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         calendar.set(field, amount);
+
+        return calendar.getTime();
+    }
+
+    public static Date firstTimeOfDate(Date date){
+        AssertUtils.notNull(date, "查询的日期不能为空");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        return calendar.getTime();
+    }
+
+    public static Date lastTimeOfDate(Date date){
+        AssertUtils.notNull(date, "查询的日期不能为空");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 59);
+        calendar.set(Calendar.MILLISECOND, 999);
 
         return calendar.getTime();
     }
