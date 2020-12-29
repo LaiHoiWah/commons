@@ -127,56 +127,66 @@ public class DateTimeUtils{
     }
 
     public static Date firstTimeOfDate(Date date){
-        AssertUtils.notNull(date, "查询的日期不能为空");
-
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.set(Calendar.HOUR, calendar.getActualMinimum(Calendar.HOUR));
-        calendar.set(Calendar.MINUTE, calendar.getActualMinimum(Calendar.MINUTE));
-        calendar.set(Calendar.SECOND, calendar.getActualMinimum(Calendar.SECOND));
-        calendar.set(Calendar.MILLISECOND, calendar.getActualMinimum(Calendar.MILLISECOND));
-
-        return calendar.getTime();
+        return firstTime(date).getTime();
     }
 
     public static Date lastTimeOfDate(Date date){
-        AssertUtils.notNull(date, "查询的日期不能为空");
+        return lastTime(date).getTime();
+    }
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.set(Calendar.HOUR, calendar.getActualMaximum(Calendar.HOUR));
-        calendar.set(Calendar.MINUTE, calendar.getActualMaximum(Calendar.MINUTE));
-        calendar.set(Calendar.SECOND, calendar.getActualMaximum(Calendar.SECOND));
-        calendar.set(Calendar.MILLISECOND, calendar.getActualMaximum(Calendar.MILLISECOND));
+    public static Date firstTimeOfMonth(Date date){
+        return firstTimeOf(date, Calendar.DAY_OF_MONTH);
+    }
+
+    public static Date lastTimeOfMonth(Date date){
+        return lastTimeOf(date, Calendar.DAY_OF_MONTH);
+    }
+
+    public static Date firstTimeOfYear(Date date){
+        return firstTimeOf(date, Calendar.DAY_OF_YEAR);
+    }
+
+    public static Date lastTimeOfYear(Date date){
+        return lastTimeOf(date, Calendar.DAY_OF_YEAR);
+    }
+
+    private static Date firstTimeOf(Date date, int field){
+        Calendar calendar = firstTime(date);
+        calendar.set(field, calendar.getActualMinimum(field));
 
         return calendar.getTime();
     }
 
-    public static Date firstTimeOfMonth(Date date){
+    private static Date lastTimeOf(Date date, int field){
+        Calendar calendar = lastTime(date);
+        calendar.set(field, calendar.getActualMaximum(field));
+
+        return calendar.getTime();
+    }
+
+    private static Calendar firstTime(Date date){
         AssertUtils.notNull(date, "查询的日期不能为空");
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMinimum(Calendar.DAY_OF_MONTH));
         calendar.set(Calendar.HOUR, calendar.getActualMinimum(Calendar.HOUR));
         calendar.set(Calendar.MINUTE, calendar.getActualMinimum(Calendar.MINUTE));
         calendar.set(Calendar.SECOND, calendar.getActualMinimum(Calendar.SECOND));
         calendar.set(Calendar.MILLISECOND, calendar.getActualMinimum(Calendar.MILLISECOND));
 
-        return calendar.getTime();
+        return calendar;
     }
 
-    public static Date lastTimeOfMonth(Date date){
+    private static Calendar lastTime(Date date){
         AssertUtils.notNull(date, "查询的日期不能为空");
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        calendar.set(Calendar.DAY_OF_MONTH, calendar.getActualMaximum(Calendar.DAY_OF_MONTH));
         calendar.set(Calendar.HOUR, calendar.getActualMaximum(Calendar.HOUR));
         calendar.set(Calendar.MINUTE, calendar.getActualMaximum(Calendar.MINUTE));
         calendar.set(Calendar.SECOND, calendar.getActualMaximum(Calendar.SECOND));
         calendar.set(Calendar.MILLISECOND, calendar.getActualMaximum(Calendar.MILLISECOND));
 
-        return calendar.getTime();
+        return calendar;
     }
 }
