@@ -8,9 +8,7 @@ public interface ResponseCode{
     int FAIL    = 500;
 
     //参数异常
-    int ILLEGAL_ARGUMENT  = 50001;
-    //持久化异常
-    int DATA_ACCESS_ERROR = 50002;
+    int ILLEGAL_ARGUMENT = 10001;
     //禁止访问
-    int FORBIDDEN_ERROR   = 50003;
+    int FORBIDDEN_ERROR  = 10003;
 }
