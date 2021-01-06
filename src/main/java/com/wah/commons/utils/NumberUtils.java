@@ -1,5 +1,7 @@
 package com.wah.commons.utils;
 
+import java.math.BigInteger;
+
 public class NumberUtils{
 
     public static boolean between(byte compare, byte min, byte max){
@@ -28,5 +30,39 @@ public class NumberUtils{
 
     public static boolean between(double compare, double min, double max){
         return compare >= min && compare <= max;
+    }
+
+    public static String binary(long dec){
+        return toRadix(Long.toString(dec), 2);
+    }
+
+    public static String octal(long dec){
+        return toRadix(Long.toString(dec), 8);
+    }
+
+    public static String decimal(long dec){
+        return toRadix(Long.toString(dec), 10);
+    }
+
+    public static String hex(long dec){
+        return toRadix(Long.toString(dec), 16);
+    }
+
+    public static String to32(long dec){
+        return toRadix(Long.toString(dec), 32);
+    }
+
+    public static String to36(long dec){
+        return toRadix(Long.toString(dec), 36);
+    }
+
+    public static String toRadix(String dec, int radixTo){
+        return convert(dec, 10, radixTo);
+    }
+
+    public static String convert(String number, int radix, int radixTo){
+        AssertUtils.hasText(number, "转换的数字不能为空");
+
+        return new BigInteger(number, radix).toString(radixTo);
     }
 }

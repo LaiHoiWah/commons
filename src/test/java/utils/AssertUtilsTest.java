@@ -1,9 +1,11 @@
 package utils;
 
 import com.wah.commons.utils.AssertUtils;
+import org.junit.Test;
 
 public class AssertUtilsTest{
 
+    @Test
     public void isEmptyByArray(){
         byte[] bytes_1 = new byte[0];
         Byte[] bytes_2 = new Byte[0];
