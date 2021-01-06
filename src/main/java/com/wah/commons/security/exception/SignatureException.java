@@ -2,7 +2,7 @@ package com.wah.commons.security.exception;
 
 import java.text.MessageFormat;
 
-public class SignatureException extends Exception{
+public class SignatureException extends UtilsException{
 
     public SignatureException(){
         super();

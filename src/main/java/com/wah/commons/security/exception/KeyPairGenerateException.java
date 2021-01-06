@@ -2,7 +2,7 @@ package com.wah.commons.security.exception;
 
 import java.text.MessageFormat;
 
-public class KeyPairGenerateException extends Exception{
+public class KeyPairGenerateException extends UtilsException{
 
     public KeyPairGenerateException(){
         super();

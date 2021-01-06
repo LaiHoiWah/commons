@@ -2,7 +2,7 @@ package com.wah.commons.security.exception;
 
 import java.text.MessageFormat;
 
-public class DecodeException extends Exception{
+public class DecodeException extends UtilsException{
 
     public DecodeException(){
         super();
