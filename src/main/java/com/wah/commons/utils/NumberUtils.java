@@ -63,6 +63,11 @@ public class NumberUtils{
     public static String convert(String number, int radix, int radixTo){
         AssertUtils.hasText(number, "转换的数字不能为空");
 
-        return new BigInteger(number, radix).toString(radixTo);
+        if(radix >= Character.MIN_RADIX && radix <= Character.MAX_RADIX){
+            return new BigInteger(number, radix).toString(radixTo);
+        }
+
+        //TODO 更高进制转换
+        return number;
     }
 }
