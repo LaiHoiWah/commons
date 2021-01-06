@@ -44,7 +44,7 @@ public class UUIDUtils{
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 
         BigInteger first = new BigInteger(uuid.substring(0, uuid.length() / 2), 16);
-        BigInteger last = new BigInteger(uuid.substring(uuid.length() / 2), 16);
+        BigInteger last  = new BigInteger(uuid.substring(uuid.length() / 2), 16);
 
         return first.add(last).toString(16);
     }
