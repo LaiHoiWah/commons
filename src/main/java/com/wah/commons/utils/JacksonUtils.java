@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.wah.commons.security.exception.DeserializeException;
+import com.wah.commons.security.exception.SerializeException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.SimpleDateFormat;
@@ -15,32 +17,44 @@ public class JacksonUtils{
 
     private static final ObjectMapper MAPPER = getMapper();
 
-    public static String serialize(Object object) throws JsonProcessingException{
+    public static String serialize(Object object) throws SerializeException {
         return serialize(object, MAPPER);
     }
 
-    public static String serialize(Object object, ObjectMapper mapper) throws JsonProcessingException{
+    public static String serialize(Object object, ObjectMapper mapper) throws SerializeException{
         if(mapper == null){
             mapper = MAPPER;
         }
 
-        return mapper.writeValueAsString(object);
+        try{
+            return mapper.writeValueAsString(object);
+        }catch(Exception e){
+            throw new SerializeException(e.getMessage(), e);
+        }
     }
 
-    public static <T> T deserialize(String json, Class<T> clazz) throws JsonProcessingException{
+    public static <T> T deserialize(String json, Class<T> clazz) throws DeserializeException {
         return deserialize(json, clazz, MAPPER);
     }
 
-    public static <T> T deserialize(String json, TypeReference<T> type) throws JsonProcessingException{
+    public static <T> T deserialize(String json, TypeReference<T> type) throws DeserializeException{
         return deserialize(json, type, MAPPER);
     }
 
-    public static <T> T deserialize(String json, Class<T> clazz, ObjectMapper mapper) throws JsonProcessingException{
-        return mapper.readValue(json, clazz);
+    public static <T> T deserialize(String json, Class<T> clazz, ObjectMapper mapper) throws DeserializeException{
+        try{
+            return mapper.readValue(json, clazz);
+        }catch(Exception e){
+            throw new DeserializeException(e.getMessage(), e);
+        }
     }
 
-    public static <T> T deserialize(String json, TypeReference<T> type, ObjectMapper mapper) throws JsonProcessingException{
-        return mapper.readValue(json, type);
+    public static <T> T deserialize(String json, TypeReference<T> type, ObjectMapper mapper) throws DeserializeException{
+        try{
+            return mapper.readValue(json, type);
+        }catch(Exception e){
+            throw new DeserializeException(e.getMessage(), e);
+        }
     }
 
     public static ObjectMapper getMapper(){
