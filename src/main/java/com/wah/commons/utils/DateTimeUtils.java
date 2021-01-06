@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class DateTimeUtils{
 
@@ -124,6 +125,29 @@ public class DateTimeUtils{
         calendar.set(field, amount);
 
         return calendar.getTime();
+    }
+
+    public static long distanceByMilliseconds(Date first, Date second){
+        AssertUtils.notNull(first, "计算的日期不能为空");
+        AssertUtils.notNull(second, "计算的日期不能为空");
+
+        return Math.abs(first.getTime() - second.getTime());
+    }
+
+    public static long distanceBySeconds(Date first, Date second){
+        return TimeUnit.MILLISECONDS.toSeconds(distanceByMilliseconds(first, second));
+    }
+
+    public static long distanceByMinutes(Date first, Date second){
+        return TimeUnit.MILLISECONDS.toMinutes(distanceByMilliseconds(first, second));
+    }
+
+    public static long distanceByHours(Date first, Date second){
+        return TimeUnit.MILLISECONDS.toHours(distanceByMilliseconds(first, second));
+    }
+
+    public static long distanceByDays(Date first, Date second){
+        return TimeUnit.MILLISECONDS.toDays(distanceByMilliseconds(first, second));
     }
 
     public static Date firstTimeOfDate(Date date){
