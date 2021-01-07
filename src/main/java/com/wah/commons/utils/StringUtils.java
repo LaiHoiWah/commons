@@ -29,4 +29,20 @@ public class StringUtils{
 
         return str.substring(0, index) + (index == str.length() - 1 ? "" : str.substring(index + 1));
     }
+
+    public static String capitalize(String str){
+        if(isBlank(str)){
+            return str;
+        }
+
+        return org.apache.commons.lang3.StringUtils.capitalize(str);
+    }
+
+    public static String uncapitalize(String str){
+        if(isBlank(str)){
+            return str;
+        }
+
+        return org.apache.commons.lang3.StringUtils.uncapitalize(str);
+    }
 }
